@@ -61,7 +61,7 @@ jobs:
           pytest --maxfail=1 --disable-warnings -q
   SafetyScan:
     runs-on: ubuntu-24.04
-    needs: test, linting
+    needs: test
     steps:
       # Runner infos
       - name: Runner infos
