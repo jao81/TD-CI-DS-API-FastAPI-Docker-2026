@@ -7,6 +7,17 @@ on:
       - completed
 
 jobs:
+  debug:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Informations du CI déclencheur
+        run: |
+          echo "Workflow   = ${{ github.event.workflow_run.name }}"
+          echo "Event      = ${{ github.event.workflow_run.event }}"
+          echo "Conclusion = ${{ github.event.workflow_run.conclusion }}"
+          echo "Branch     = ${{ github.event.workflow_run.head_branch }}"
+          echo "SHA        = ${{ github.event.workflow_run.head_sha }}"
   deploy:
     runs-on: ubuntu-24.04
     if: ${{github.event.workflow_run.conclusion == 'success'}}
@@ -36,10 +47,10 @@ jobs:
       #    username: ${{ secrets.SSH_USER }}
       #    key: ${{ secrets.SSH_KEY }}
       #    script: |
-      #      docker pull ${{ secrets.DOCKERHUB_USERNAME }}/fastapi-td:latest
-      #      docker stop fastapi || true
-      #      docker rm fastapi || true
-      #      docker run -d -p 8000:8000 --name fastapi ${{ secrets.DOCKERHUB_USERNAME }}/fastapi-td:latest
+      #      docker pull ${{ secrets.DOCKERHUB_USERNAME }}/fastapi-td-ci_cd-f68:latest
+      #      docker stop fastapi-td-ci_cd-f68 || true
+      #      docker rm fastapi-td-ci_cd-f68 || true
+      #      docker run -d -p 8000:8000 --name fastapi ${{ secrets.DOCKERHUB_USERNAME }}/fastapi-td-ci_cd-f68:latest
       #- name: Vérification post-déploiement (smoke test)
       #  run: |
       #   echo "Attente du démarrage de l'application..."
