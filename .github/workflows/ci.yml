@@ -1,4 +1,4 @@
-name: CI – FastAPI
+name: CI – Herve
  
 on:
   pull_request:
