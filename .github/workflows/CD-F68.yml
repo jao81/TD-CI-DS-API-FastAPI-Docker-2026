@@ -18,7 +18,6 @@ jobs:
           echo "Conclusion = ${{ github.event.workflow_run.conclusion }}"
           echo "Branch     = ${{ github.event.workflow_run.head_branch }}"
           echo "SHA        = ${{ github.event.workflow_run.head_sha }}"
-          echo "PR         = ${{ toJSON(github.event.workflow_run.pull_requests) }}"
   deploy:
     runs-on: ubuntu-24.04
     if: ${{github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'dev'}}
